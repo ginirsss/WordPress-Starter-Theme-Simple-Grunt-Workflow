@@ -44,12 +44,12 @@ module.exports = function(grunt) {
     less: {
       dist: {
         options: {
-            compress: false
+            compress: true
         },
         files: {
-            'dist/assets/css/style.min.css': 'src/less/style.less'
+            'style.css': 'src/less/style.less'
         }
-      } 
+      }
     },
     watch: {
       options: {
