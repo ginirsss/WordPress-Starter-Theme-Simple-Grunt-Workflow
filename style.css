@@ -14,4 +14,4 @@ a,abbr,acronym,address,applet,b,big,blockquote,body,caption,center,cite,code,dd,
 
 /* =Your CSS
 -------------------------------------------------------------- */
-
+@import url("dist/assets/css/style.min.css");
