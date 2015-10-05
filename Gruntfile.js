@@ -1,34 +1,29 @@
 /**
  *
- * WordPress Starter Theme + Simple Grunt Workflow small front-end projects with wordpress
+ * WordPress Starter Theme + Simple Grunt Workflow small front-end projects with WordPress
  * repo: https://github.com/ginirsss/WordPress-Starter-Theme-Simple-Grunt-Workflow
- * @ginirsss / ©2015
+ * © 2015 @ginirsss
  *
  */
 module.exports = function(grunt) {
+  require('jit-grunt')(grunt);
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    concat: {
-      dist: {
-        src: ["dist/assets/js/libs/*.js"],
-        dest: "dist/assets/js/libs.js"
-      }
-    },
     uglify: {
       options: {
         beautify: true
       },
       my_target: {
         files: {
-          'dist/assets/js/functions.min.js': ['src/js/functions.js'],
-          'dist/assets/js/functions-index.min.js': ['src/js/functions-index.js'],
+          'js/functions.min.js': ['src/js/functions.js'],
+          'js/functions-index.min.js': ['src/js/functions-index.js'],
         }
       }
     },
     jshint: {
-      files: ["src/js/functions.js"],
+      files: ['src/js/functions.js'],
       options: {
-        jshintrc: ".jshintrc"
+        jshintrc: '.jshintrc'
       }
     },
     imagemin: {
@@ -37,7 +32,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: 'src/images/',
             src: ['*.{png,jpg,gif}'],
-            dest: 'dist/assets/images/'
+            dest: 'images/'
         }]
       }
     },
@@ -78,14 +73,7 @@ module.exports = function(grunt) {
       }
     }
   });
-  grunt.loadNpmTasks("grunt-contrib-concat");
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks("grunt-contrib-jshint");
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-newer');
 
   grunt.registerTask('default', ['newer:uglify','newer:less','newer:imagemin','watch']);
-  grunt.registerTask("testjs", ["jshint"]);
+  grunt.registerTask('testjs', ['jshint']);
 };
